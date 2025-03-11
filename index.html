@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Музей Исторических Игр</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1><a href="#">Музей Игр</a></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Главная</a></li>
+                    <li><a href="#exhibits">Экспонаты</a></li>
+                    <li><a href="#games">Игры</a></li>
+                    <li><a href="#gallery">Галерея</a></li>
+                    <li><a href="#contact" class="btn">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Главная секция -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h2>Добро пожаловать в Музей Исторических Игр</h2>
+            <p>Погрузитесь в увлекательный мир истории России через интерактивные игры.</p>
+            <a href="#games" class="btn">Начать играть</a>
+        </div>
+    </section>
+
+    <!-- Секция Экспонатов -->
+    <section id="exhibits" class="exhibits">
+        <div class="container">
+            <h2>Наши Экспонаты</h2>
+            <div class="exhibit-grid">
+                <div class="exhibit-card">
+                    <img src="https://via.placeholder.com/300x200" alt="Экспонат 1">
+                    <h3>Шашки</h3>
+                    <p>Классическая настольная игра с богатой историей.</p>
+                </div>
+                <div class="exhibit-card">
+                    <img src="https://via.placeholder.com/300x200" alt="Экспонат 2">
+                    <h3>Монополия</h3>
+                    <p>Легендарная экономическая стратегия для всей семьи.</p>
+                </div>
+                <div class="exhibit-card">
+                    <img src="https://via.placeholder.com/300x200" alt="Экспонат 3">
+                    <h3>Скрэббл</h3>
+                    <p>Увлекательная игра для любителей слов и языковых загадок.</p>
+                </div>
+                <!-- Добавьте больше карточек экспонатов по необходимости -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция Игры -->
+    <section id="games" class="games">
+        <div class="container">
+            <h2>Игры для изучения истории</h2>
+            <div class="game-grid">
+                <div class="game-card">
+                    <h3>Историческая Викторина</h3>
+                    <p>Проверьте свои знания по истории России в увлекательной викторине.</p>
+                    <button onclick="startQuiz()" class="btn">Играть</button>
+                </div>
+                <div class="game-card">
+                    <h3>Интерактивный Таймлайн</h3>
+                    <p>Исследуйте ключевые события российской истории через интерактивный таймлайн.</p>
+                    <button onclick="startTimeline()" class="btn">Изучать</button>
+                </div>
+                <div class="game-card">
+                    <h3>Историческая головоломка</h3>
+                    <p>Изучите малую часть жизни Росси играя в головоломку.</p>
+                    <button id="puzzleBtn" class="btn">Играть</button>
+                </div>
+                <div class="game-card">
+                    <h3>Царская викторина</h3>
+                    <p>Испытай себя в маленькой викторине про королей России.</p>
+                    <button id="quizBtn" class="btn">Играть</button>
+                </div>
+                <!--<div class="game-card">
+                    <span class="close" id="puzzleClose">&times;</span>
+                    <h3>Историческая головоломка: Собери Россию</h3>
+                    <p id="info">Кликните на регион, чтобы узнать его историю.</p>
+                    <button onclick="" class="btn">Играть</button>
+                    <div id="mapContainer">
+                        <div class="region" data-info="Этап 1: Собираем земли вокруг Москвы">Московский регион</div>
+                        <div class="region" data-info="Этап 2: Присоединение Сибири при Ермаке">Сибирский регион</div>
+                        <div class="region" data-info="Этап 3: Присоединение Кавказа в XIX веке">Кавказский регион</div>
+                        <div class="region" data-info="Этап 4: Присоединение Дальнего Востока">Дальний Восток</div>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <span class="close" id="quizClose">&times;</span>
+                    <h3>Царская викторина: Пройди путь от Рюрика до Романовых</h3>
+                    <button onclick="loadQuestion()" class="btn">Играть</button>
+                    <div id="question">Начнем викторину! Кто был первым князем Руси?</div>
+                    <button class="answer" data-correct="true">Рюрик</button>
+                    <button class="answer" data-correct="false">Иван Грозный</button>
+                    <button class="answer" data-correct="false">Пётр I</button>
+                    <div id="feedback"></div>
+                </div>-->
+                <div class="game-card">
+                    <h3>Интерактивный Таймлайн</h3>
+                    <p>Исследуйте ключевые события российской истории через интерактивный таймлайн.</p>
+                    <button onclick="startTimeline()" class="btn">Изучать</button>
+                </div>
+                <div class="game-card">
+                    <h3>Интерактивный Таймлайн</h3>
+                    <p>Исследуйте ключевые события российской истории через интерактивный таймлайн.</p>
+                    <button onclick="startTimeline()" class="btn">Изучать</button>
+                <!-- Добавьте больше игр по необходимости -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция Галерея -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2>Галерея</h2>
+            <div class="gallery-grid">
+                <img src="background: url('https://drive.google.com/file/d/1JS6fT7Q2YQaZdIKPfPRfR8do-I9KoNhq/view?usp=drive_link') no-repeat center center/cover;" alt="Галерея 1">
+                <img src="https://drive.google.com/file/d/1JS6fT7Q2YQaZdIKPfPRfR8do-I9KoNhq/view?usp=drive_link" alt="Галерея 2">
+                <img src="https://via.placeholder.com/400x300" alt="Галерея 3">
+                <img src="https://via.placeholder.com/400x300" alt="Галерея 4">
+                <img src="https://via.placeholder.com/400x300" alt="Галерея 5">
+                <img src="https://via.placeholder.com/400x300" alt="Галерея 6">
+                <!-- Добавьте больше изображений по необходимости -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция Контакты -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Контакты</h2>
+            <p>Адрес: ул. Истории, д. 1, Москва, Россия</p>
+            <p>Телефон: +7 (495) 123-45-67</p>
+            <p>Email: info@museumgames.ru</p>
+            <form class="contact-form">
+                <input type="text" placeholder="Ваше имя" required>
+                <input type="email" placeholder="Ваш email" required>
+                <textarea placeholder="Ваше сообщение" rows="5" required></textarea>
+                <button type="submit" class="btn">Отправить</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Музей Исторических Игр. Все права защищены.</p>
+            <ul class="socials">
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Twitter</a></li>
+                <li><a href="#">Instagram</a></li>
+                <li><a href="#">YouTube</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- Модальные окна для игр -->
+    <!-- Викторина -->
+    <div id="quizModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('quizModal')">&times;</span>
+            <h2>Историческая Викторина</h2>
+            <div id="quiz">
+                <!-- Вопросы будут загружены сюда через JavaScript -->
+            </div>
+            <button onclick="submitQuiz()" class="btn">Отправить ответы</button>
+        </div>
+    </div>
+
+    <!-- Таймлайн -->
+    <div id="timelineModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('timelineModal')">&times;</span>
+            <h2>Интерактивный Таймлайн</h2>
+            <div id="timeline">
+                <!-- Таймлайн будет загружен сюда через JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
