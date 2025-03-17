@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Музей Исторических Игр</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1><a href="#">Музей Игр</a></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Главная</a></li>
+                    <li><a href="#exhibits">Экспонаты</a></li>
+                    <li><a href="#games">Игры</a></li>
+                    <li><a href="#gallery">Галерея</a></li>
+                    <li><a href="#contact" class="btn">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Главная секция -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h2>Добро пожаловать в Музей Исторических Игр</h2>
+            <p>Погрузитесь в увлекательный мир истории России через интерактивные игры.</p>
+            <a href="#games" class="btn">Начать играть</a>
+        </div>
+    </section>
+
+    <!-- Секция Экспонатов -->
+    <section id="exhibits" class="exhibits">
+        <div class="container">
+            <h2>Наши Экспонаты</h2>
+            <div class="exhibit-grid">
+                <div class="exhibit-card">
+                    <img src="https://i.postimg.cc/SsdYH2xc/300x20-0.jpg" alt="Экспонат 1">
+                    <h3>Шашки</h3>
+                    <p>Классическая настольная игра с богатой историей.</p>
+                </div>
+                <div class="exhibit-card">
+                    <img src="https://i.postimg.cc/nrMr535t/300x200.jpg" alt="Экспонат 2">
+                    <h3>Монополия</h3>
+                    <p>Легендарная экономическая стратегия для всей семьи.</p>
+                </div>
+                <div class="exhibit-card">
+                    <img src="https://i.postimg.cc/8PJsmnMR/photo-x.jpg" alt="Экспонат 3">
+                    <h3>Скрэббл</h3>
+                    <p>Увлекательная игра для любителей слов и языковых загадок.</p>
+                </div>
+                <!-- Добавьте больше карточек экспонатов по необходимости -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция Игры -->
+    <section id="games" class="games">
+        <div class="container">
+            <h2>Игры для изучения истории</h2>
+            <div class="game-grid">
+                <div class="game-card">
+                    <h3>Воссоздай Великую Русь</h3>
+                    <p>Проверь свои знания местности Великой Руси с помощью карты.</p>
+                    <button id="open-modal" class="btn">Играть</button>
+                </div>
+                <div class="game-card">
+                    <h3>Интерактивный Таймлайн</h3>
+                    <p>Исследуйте ключевые события российской истории через интерактивный таймлайн.</p>
+                    <button id="timelineBtn" class="btn">Изучать</button>
+                </div>
+                <div class="game-card">
+                    <h3>Царская викторина</h3>
+                    <p>Испытай себя в маленькой викторине про королей России.</p>
+                    <button id="quizBtn" class="btn">Играть</button>
+                </div>
+                <div class="game-card">
+                    <h3>Историческая головоломка</h3>
+                    <p>Изучите малую часть жизни Руси играя в головоломку.</p>
+                    <button id="puzzleInfoBtn" class="btn">Играть</button>
+                </div>
+        </div>
+    </section>
+
+    <!-- Секция Галерея -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2>Галерея</h2>
+            <div class="gallery-grid">
+                <img src="https://runet.news/wp-content/uploads/2016/03/kartinki-Rossijskaya-Imperiya-Rossiya-bitva-737550-1200x600.jpe" alt="Галерея 1">
+                <img src="https://www.rosimperija.info/wp-content/uploads/2023/04/surikovstreltsi_1024_593-624x361.webp" alt="Галерея 2">
+                <img src="https://sdo.nklpis.ru/pluginfile.php/36833/course/summary/%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D1%8F%20%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D0%B8.jpg" alt="Галерея 3">
+                <img src="https://razoom.mgutm.ru/pluginfile.php/1108/course/overviewfiles/111111111111111111111111111111111111111111111.jpg" alt="Галерея 4">
+                <img src="https://www.cinemafia.ru/images/upload/jFDdndyOMY.jpg" alt="Галерея 5">
+                <img src="https://avatars.dzeninfra.ru/get-zen_doc/1811900/pub_64fb39f958419763147a2c41_64fb3b09b0453c4684495369/scale_1200" alt="Галерея 6">
+                <!-- Добавьте больше изображений по необходимости -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция Контакты -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Контакты</h2>
+            <p>Адрес: ул. Истории, д. 1, Москва, Россия</p>
+            <p>Телефон: +7 (495) 123-45-67</p>
+            <p>Email: info@museumgames.ru</p>
+            <form class="contact-form">
+                <input type="text" placeholder="Ваше имя" required>
+                <input type="email" placeholder="Ваш email" required>
+                <textarea placeholder="Ваше сообщение" rows="5" required></textarea>
+                <button type="submit" class="btn">Отправить</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Музей Исторических Игр. Все права защищены.</p>
+            <ul class="socials">
+                <li><a href="https://t.me/rlcsnotion">Telegram</a></li>
+                <li><a href="https://x.com/Prizrak22441">Twitter</a></li>
+                <li><a href="https://www.instagram.com/prizrak.262/">Instagram</a></li>
+                <li><a href="https://vk.com/prizrak262">VK</a></li>
+            </ul>
+        </div>
+    </footer>
+
+<!-- Модальное окно описания головоломки -->
+<div id="puzzleInfoModal" class="modal">
+    <div class="modal-content">
+        <span id="puzzleInfoClose" class="close">&times;</span>
+        <h2>Историческая головоломка</h2>
+        <p>Изучите малую часть жизни России, собирая головоломку.</p>
+        <button id="startPuzzleBtn">Начать игру</button>
+    </div>
+</div>
+
+<!-- Модальное окно с игрой (головоломка) -->
+<div id="puzzleModal" class="modal">
+    <div class="modal-content">
+        <span id="puzzleClose" class="close">&times;</span>
+        <h2>Собери карту России</h2>
+        <div id="puzzleGame">
+            <div class="drop-zone" id="zone1"></div>
+            <div class="drop-zone" id="zone2"></div>
+            <div class="drop-zone" id="zone3"></div>
+
+            <!-- Части головоломки (перетаскиваемые изображения) -->
+            <img src="c:\Users\Ярослав\OneDrive\Рабочий стол\Папки\ИП\Рабочие материалы\Картинки\cerk.png" id="piece1" class="puzzle-piece" data-zone="zone1" draggable="true">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFNE9mnqHrWSzGNZYhQV0wRYnZs9MhU4TNZQ&s" id="piece2" class="puzzle-piece" data-zone="zone2" draggable="true">
+            <img src="https://histrf.ru/images/articles/07/JY23eLIpfYKX3dw7uCL4hqO8uWSI2QVxj1FpTO6l.jpg" id="piece3" class="puzzle-piece" data-zone="zone3" draggable="true">
+        </div>
+        <p id="puzzleMessage"></p>
+    </div>
+</div>
+
+
+<!-- Модальное окно Карты -->
+<div id="game-modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Воссоздай Великую Русь</h2>
+        <p>Перетащи части карты на правильные места</p>
+
+        <div class="puzzle-board4">
+            <div class="drop-zon" data-id="1"></div>
+            <div class="drop-zon" data-id="2"></div>
+            <div class="drop-zon" data-id="3"></div>
+            <div class="drop-zon" data-id="4"></div>
+        </div>
+
+        <div class="puzzle-pieces4">
+            <img src="https://i.postimg.cc/rFDs8Ypd/rus7-Sl1av.jpg" class="puzzle-piece4" data-id="3" draggable="true">
+            <img src="https://i.postimg.cc/zGWfhbK8/rus7-Sl2av.jpg" class="puzzle-piece4" data-id="4" draggable="true">
+            <img src="https://i.postimg.cc/3wTxF8Fp/rus7-Sl3av.jpg" class="puzzle-piece4" data-id="1" draggable="true">
+            <img src="https://i.postimg.cc/43QN8DW0/rus7-Slav-fotor-20250315224233.jpg" class="puzzle-piece4" data-id="2" draggable="true">
+        </div>
+
+        <p id="result-message"></p>
+    </div>
+</div>
+
+<!-- Модальное окно викторины -->
+<div id="quizModal" class="modal">
+    <div class="modal-content">
+        <span id="quizClose" class="close">&times;</span>
+        <h2>Царская викторина</h2>
+        <p id="question"></p>
+        <button class="answer"></button>
+        <button class="answer"></button>
+        <button class="answer"></button>
+        <p id="feedback"></p>
+    </div>
+</div>
+
+<!-- Модальное окно таймлайна -->
+<div id="timelineModal" class="modal">
+    <div class="modal-content">
+        <span id="timelineClose" class="close">&times;</span>
+        <h2>Исторический таймлайн</h2>
+        <div id="timelineGame">
+            <div class="timeline-slot" data-year="862"></div>
+            <div class="timeline-slot" data-year="988"></div>
+            <div class="timeline-slot" data-year="1242"></div>
+            <div class="timeline-slot" data-year="1613"></div>
+            <div class="timeline-slot" data-year="1812"></div>
+            <div class="timeline-slot" data-year="1917"></div>
+        </div>
+        <div id="timelineContainer"></div>
+        <p id="timelineMessage"></p>
+    </div>
+</div>
+
+
+    <script src="scripts.js"></script>
+</body>
+</html>
