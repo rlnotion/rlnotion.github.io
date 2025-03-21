@@ -23,6 +23,14 @@ body {
     margin: 0 auto;
 }
 
+@media (min-width: 600px) {
+    .container { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 900px) {
+    .container { grid-template-columns: repeat(3, 1fr); }
+}
+
 /* Логотип */
 header .logo {
     float: left;
