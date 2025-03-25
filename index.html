@@ -148,15 +148,18 @@
         <span id="puzzleClose" class="close">&times;</span>
         <h2>Собери карту России</h2>
         <div id="puzzleGame">
-            <div class="drop-zone" id="zone1"></div>
-            <div class="drop-zone" id="zone2"></div>
-            <div class="drop-zone" id="zone3"></div>
-
-            <!-- Части головоломки (перетаскиваемые изображения) -->
-            <img src="c:\Users\Ярослав\OneDrive\Рабочий стол\Папки\ИП\Рабочие материалы\Картинки\cerk.png" id="piece1" class="puzzle-piece" data-zone="zone1" draggable="true">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFNE9mnqHrWSzGNZYhQV0wRYnZs9MhU4TNZQ&s" id="piece2" class="puzzle-piece" data-zone="zone2" draggable="true">
-            <img src="https://histrf.ru/images/articles/07/JY23eLIpfYKX3dw7uCL4hqO8uWSI2QVxj1FpTO6l.jpg" id="piece3" class="puzzle-piece" data-zone="zone3" draggable="true">
-        </div>
+                <div class="drop-zone" data-piece="1"></div>
+                <div class="drop-zone" data-piece="2"></div>
+                <div class="drop-zone" data-piece="3"></div>
+                <div class="drop-zone" data-piece="4"></div>
+            </div>
+            
+            <div class="puzzle-pieces">
+                <img src="https://энциклопедия.минобороны.рф/files/morf/kulikovskaya_bitva4_550.jpg" class="puzzle-piece" draggable="true" data-piece="1">
+                <img src="https://encyclopedia.mil.ru/files/morf/ugra2_550.jpg" class="puzzle-piece" draggable="true" data-piece="2">
+                <img src="https://rodina-history.ru/uploads/images/2024/03/28/ivantretii%CC%86_7a0.jpg" class="puzzle-piece" draggable="true" data-piece="3">
+                <img src="piece4.png" class="puzzle-piece" draggable="true" data-piece="4">
+            </div>
         <p id="puzzleMessage"></p>
     </div>
 </div>
