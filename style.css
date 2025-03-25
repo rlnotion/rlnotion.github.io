@@ -358,6 +358,35 @@ nav ul li .btn:hover {
     transform: scale(1.05);
 }
 
+ /* Стили для изображений */
+img {
+    width: 200px; /* Примерный размер */
+    cursor: pointer; /* Показываем, что картинка кликабельна */
+}
+
+/* Контейнер для полноэкранного просмотра */
+#fullscreenContainer {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.95);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* Полноэкранное изображение */
+#fullscreenImage {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover; /* Заполняет экран без искажений */
+}
+
 /* Секция Контакты */
 .contact {
     padding: 60px 0;
