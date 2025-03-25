@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Музей Исторических Игр</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="https://i.postimg.cc/tCPkgPYQ/favicon-32x32.png" type="image/x-icon">
 </head>
 <body>
     <!-- Шапка сайта -->
@@ -71,21 +72,60 @@
                 </div>
                 <div class="game-card">
                     <h3>Интерактивный Таймлайн</h3>
-                    <p>Исследуйте ключевые события российской истории через интерактивный таймлайн.</p>
-                    <button id="timelineBtn" class="btn">Изучать</button>
+                    <p>Исследуйте ключевые события Древней Руси через интерактивный таймлайн.</p>
+                    <button id="openTableBtn" class="btn">Изучить</button>
                 </div>
                 <div class="game-card">
                     <h3>Царская викторина</h3>
-                    <p>Испытай себя в маленькой викторине про королей России.</p>
-                    <button id="quizBtn" class="btn">Играть</button>
+                    <p>Испытай себя в маленькой викторине про князей Руси.</p>
+                    <button id="openQuizBtn" class="btn">Играть</button>
                 </div>
                 <div class="game-card">
                     <h3>Историческая головоломка</h3>
                     <p>Изучите малую часть жизни Руси играя в головоломку.</p>
                     <button id="puzzleInfoBtn" class="btn">Играть</button>
-                </div>
-        </div>
+                </div>    
     </section>
+
+    <!-- Модальное окно с таблицей -->
+    <div id="timelineModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeTimeline()">&times;</span>
+            <h3>Исторический Таймлайн</h3>
+            <div id="timeline">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Дата</th>
+                            <th>Событие</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr onclick="openModal('Призвание варягов', 'Согласно летописанию, когда славяне, жившие на территории Восточной Европы, не могли договориться о правлении, они пригласили варягов править ими. Это событие произошло в 862 году, когда племена, такие как кривичи, северяне и другие, изменили Рюрика, вождя варягов, княжить в Новгороде. Позднее его братья — Синеус и Трувор — стали правителями других регионов. Рюрик считается основателем династии Рюриковичей, правившей на Руси более 700 лет. Это событие считается началом объединения славянских племен и формирования первых княжеств.')">
+                            <td>862</td>
+                            <td>Призвание варягов</td>
+                        </tr>
+                        <tr onclick="openModal('Крещение Руси', 'Князь Владимир Святославич (в прошлом известный как Владимир Красное Солнышко) в 988 году принял решение принять христианство и сделать его государственной религией Киевской Руси. Это событие получило название Крещения Руси. Владимир решил креститься после того, как его посланцы побывали в Византии и других странах, где им была предложена христианская культура. После этого Владимир отправился в Константинополь, где принял крещение. Вернувшись в Киев, он стал крестить жителей, а также организовать массовое крещение в реке Днепр. Крещение Руси привело к возникновению связей с Византией и западными изменениями, а также сыграло решающую роль в развитии культуры, письменности и образования на Руси.')">
+                            <td>988</td>
+                            <td>Крещение Руси</td>
+                        </tr>
+                        <tr onclick="openModal('Куликовская битва', 'Куликовская битва — важнейшее событие в истории России, произошедшее 8 сентября 1380 года на Куликовом поле, вблизи реки Дон. Дмитрий Донской, Московский, возглавил объединенные русские войска в регионе с ордынским полководцем Мамаем Княземем, который пытался снова подчинить Русь Золотой Орде. Русские войска, несмотря на значительное превосходство силы, одержали победу. Это событие стало необходимым шагом в освобождении России от монголо-татарского владычества. Победа в Куликовской битве символизировала единство русских земель и начало ослабления Орды. Дмитрий Донской стал героем и национальным символом борьбы за независимость. Эти три события играют ключевую роль в становлении Древней Руси и в перспективах развития русской государственности.')">
+                            <td>1380</td>
+                            <td>Куликовская битва</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>  
+        </div>
+    </div>
+
+    <!-- Модальное окно с подробностями -->
+    <div id="detailsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeDetails()">&times;</span>
+            <p id="eventDetails"></p>
+        </div>
+    </div>
 
     <!-- Секция Галерея -->
     <section id="gallery" class="gallery">
@@ -144,7 +184,7 @@
 <div id="puzzleModal" class="modal">
     <div class="modal-content">
         <span id="puzzleClose" class="close">&times;</span>
-        <h2>Собери карту России</h2>
+        <h2>Собери Головоломку</h2>
         <div id="puzzleGame">
                 <div class="drop-zone" data-piece="1"></div>
                 <div class="drop-zone" data-piece="2"></div>
@@ -156,7 +196,7 @@
                 <img src="https://энциклопедия.минобороны.рф/files/morf/kulikovskaya_bitva4_550.jpg" class="puzzle-piece" draggable="true" data-piece="1">
                 <img src="https://encyclopedia.mil.ru/files/morf/ugra2_550.jpg" class="puzzle-piece" draggable="true" data-piece="2">
                 <img src="https://rodina-history.ru/uploads/images/2024/03/28/ivantretii%CC%86_7a0.jpg" class="puzzle-piece" draggable="true" data-piece="3">
-                <img src="piece4.png" class="puzzle-piece" draggable="true" data-piece="4">
+                <img src="https://avatars.dzeninfra.ru/get-zen_doc/5098316/pub_6392bbf421a7532cbe79e43e_6392bbf9a0a00a4afe9e774a/scale_1200" class="puzzle-piece" draggable="true" data-piece="4">
             </div>
         <p id="puzzleMessage"></p>
     </div>
@@ -189,15 +229,16 @@
 </div>
 
 <!-- Модальное окно викторины -->
-<div id="quizModal" class="modal">
+<div id="quizModal" class="modal quiz-modal">
     <div class="modal-content">
-        <span id="quizClose" class="close">&times;</span>
-        <h2>Царская викторина</h2>
-        <p id="question"></p>
-        <button class="answer"></button>
-        <button class="answer"></button>
-        <button class="answer"></button>
-        <p id="feedback"></p>
+        <span id="closeModalBtn" class="close">&times;</span>
+        <h2 id="question"></h2>
+        <div id="feedback"></div>
+        <div class="answers">
+            <button class="answer"></button>
+            <button class="answer"></button>
+            <button class="answer"></button>
+        </div>
     </div>
 </div>
 
@@ -218,6 +259,8 @@
         <p id="timelineMessage"></p>
     </div>
 </div>
+
+
 
 
     <script src="scripts.js"></script>
