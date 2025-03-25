@@ -498,27 +498,91 @@ footer .socials li a:hover {
     width: 100%; /* Полная ширина */
     height: 100%; /* Полная высота */
     overflow: auto; /* Включает прокрутку, если нужно */
-    background-color: rgba(0,0,0,0.8); /* Чёрный фон с прозрачностью */
+    background-color: rgba(0, 0, 0, 0.8); /* Чёрный фон с прозрачностью */
 }
 
 .modal-content {
     background-color: #fefefe;
-    margin: 5% auto; /* 5% сверху и центрирование */
+    margin: 5% auto; /* Центрируем окно и добавляем отступы */
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
-    max-width: 700px;
+    width: 80%; /* Ширина окна */
+    max-width: 600px; /* Максимальная ширина */
+    max-height: 70vh; /* Максимальная высота окна, не более 70% от экрана */
+    overflow-y: auto; /* Прокрутка, если контент выходит за пределы */
     border-radius: 8px;
     position: relative;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    box-sizing: border-box; /* Включаем паддинги в размер элемента */
+}
+
+/* Стиль для модального окна с контентом викторины */
+.quiz-modal .modal-content {
+    background-color: #fefefe;
+    padding: 10px; /* Умеренные отступы */
+    border: 1px solid #888;
+    width: 300px; /* Увеличиваем ширину */
+    max-width: 100%;
+    height: auto; /* Делаем высоту адаптивной */
+    min-height: 250px; /* Минимальная высота */
+    max-height: 450px; /* Увеличиваем максимальную высоту */
+    overflow-y: auto; /* Прокрутка при необходимости */
+    border-radius: 6px; /* Меньше скругления */
+    position: relative;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); /* Умеренная тень */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Контент выравнивается сверху */
+    padding-top: 20px; /* Убираем лишние отступы сверху */
+    word-wrap: break-word; /* Перенос слов, если они не помещаются */
+    white-space: normal; /* Позволяет переносу слов */
+    margin-bottom: 0; /* Убираем дополнительное пространство снизу */
+}
+
+/* Убираем отступы и паддинги у текста */
+.quiz-modal .modal-content p,
+.quiz-modal .modal-content h3 {
+    margin: 0;
+    padding: 0;
+    font-size: 14px; /* Умеренный размер шрифта */
+    word-wrap: break-word; /* Перенос текста */
+    white-space: normal; /* Разрешаем перенос строк */
+}
+
+/* Стили для кнопок */
+.quiz-modal .modal-content button {
+    margin-top: 8px; /* Умеренные отступы между кнопками */
+    padding: 6px 12px; /* Средний размер кнопок */
+    align-self: flex-end; /* Кнопки прижимаются к низу */
+    font-size: 12px; /* Умеренный размер шрифта кнопок */
+}
+
+/* Ограничиваем пространство для контента */
+.quiz-modal .modal-content > *:not(button) {
+    overflow-y: auto;
+    max-height: calc(100% - 45px); /* Снижаем пространство внизу */
+}
+
+/* Стили для крестика */
+.quiz-modal .modal-content .close {
+    position: absolute;
+    top: 10px; /* Сдвигаем крестик немного вниз */
+    right: 10px; /* Сдвигаем крестик немного вправо */
+    font-size: 20px; /* Увеличиваем размер крестика */
+    color: #888;
+    cursor: pointer;
+}
+
+.quiz-modal .modal-content .close:hover {
+    color: #000;
 }
 
 .close {
     color: #aaa;
     position: absolute;
     top: 10px;
-    right: 20px;
+    right: 10px;
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
@@ -529,6 +593,7 @@ footer .socials li a:hover {
     color: #000;
     text-decoration: none;
 }
+
 
 /* Стили для головоломки */
 #puzzleGame {
@@ -603,6 +668,41 @@ footer .socials li a:hover {
 
 .timeline-event p {
     color: #7f8c8d;
+}
+
+/* Таблица */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    margin-top: 10px;
+}
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    text-align: center;
+}
+th {
+    background: #444;
+    color: white;
+}
+tr:hover {
+    background: #ddd;
+}
+
+/* Кнопка */
+#showTimelineBtn {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+}
+#showTimelineBtn:hover {
+    background-color: #0056b3;
 }
 
 /* Викторина и пазл */
