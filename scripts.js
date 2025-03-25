@@ -287,5 +287,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("fullscreenContainer").style.display = "none";
+});
 
 
