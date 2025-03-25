@@ -42,87 +42,67 @@ startPuzzleBtn.onclick = () => {
     puzzleModal.style.display = "block";
 };
 
+// Закрытие модальных окон при клике вне их
+window.addEventListener("click", function(event) {
+    if (event.target === puzzleInfoModal || event.target === puzzleModal) {
+        puzzleInfoModal.style.display = "none";
+        puzzleModal.style.display = "none";
+    }
+});
+
+
 // Логика перетаскивания
 document.addEventListener("DOMContentLoaded", function () {
-    // Получаем все части головоломки и зоны
     const pieces = document.querySelectorAll(".puzzle-piece");
     const zones = document.querySelectorAll(".drop-zone");
+    const message = document.getElementById("puzzleMessage");
 
-// Функция для начала перетаскивания
-pieces.forEach(piece => {
-    piece.addEventListener("dragstart", (e) => {
-        // Сохраняем ID элемента, который мы перетаскиваем
-        e.dataTransfer.setData("text", e.target.id);
-    });
-});
-
-// Функция для перетаскивания на зону
-dropZones.forEach(zone => {
-    zone.addEventListener("dragover", (e) => {
-        e.preventDefault(); // Разрешаем перетаскивание на зону
-    });
-
-    zone.addEventListener("drop", (e) => {
-        e.preventDefault();
-        const pieceId = e.dataTransfer.getData("text"); // Получаем ID элемента
-        const piece = document.getElementById(pieceId);
-
-        // Проверяем, если элемент подходит для данной зоны
-        if (piece.dataset.zone === zone.id) {
-            // Перемещаем элемент в зону
-            zone.appendChild(piece);
-            piece.style.position = "relative";  // Убираем абсолютное позиционирование
-            piece.style.left = "0";
-            piece.style.top = "0";
-            checkPuzzleCompletion();  // Проверяем, решена ли головоломка
-        }
-    });
-});
-
-    // Добавляем обработчики для перетаскивания
+    // Обработчик начала перетаскивания
     pieces.forEach(piece => {
         piece.addEventListener("dragstart", (event) => {
-            event.dataTransfer.setData("id", piece.id);  // Сохраняем id перетаскиваемой картинки
+            event.dataTransfer.setData("piece", piece.dataset.piece);
         });
     });
 
-// Добавляем обработчики для зон, куда можно перетаскивать
-zones.forEach(zone => {
-     zone.addEventListener("dragover", (event) => {
-        event.preventDefault(); // Разрешаем перетаскивание
+    // Обработчики событий для зон
+    zones.forEach(zone => {
+        zone.addEventListener("dragover", (event) => {
+            event.preventDefault();
+        });
+
+        zone.addEventListener("drop", (event) => {
+            event.preventDefault();
+            const pieceId = event.dataTransfer.getData("piece");
+            const piece = document.querySelector(`.puzzle-piece[data-piece="${pieceId}"]`);
+
+            if (!piece) return;
+
+            // Проверяем, соответствует ли зона и элемент
+            if (zone.dataset.piece === piece.dataset.piece) {
+                zone.appendChild(piece);
+                piece.style.position = "relative"; // Чтобы не было смещения
+                piece.style.top = "0";
+                piece.style.left = "0";
+                piece.draggable = false; // Запрещаем дальнейшее перемещение
+
+                checkPuzzleCompletion();
+            }
+        });
     });
 
-    zone.addEventListener("drop", (event) => {
-        event.preventDefault();
-        const pieceId = event.dataTransfer.getData("id");  // Получаем id перетаскиваемой картинки
-        const piece = document.getElementById(pieceId);
+    // Проверка завершения головоломки
+    function checkPuzzleCompletion() {
+        let completed = true;
+        zones.forEach(zone => {
+            const piece = zone.querySelector(".puzzle-piece");
+            if (!piece || piece.dataset.piece !== zone.dataset.piece) {
+                completed = false;
+            }
+        });
 
-        // Проверяем, правильно ли перетащена картинка
-        if (piece.dataset.zone === zone.id) {
-            zone.appendChild(piece); // Перемещаем картинку в зону
-            piece.style.position = "relative"; // Обновляем стиль
-            piece.style.top = "0"; // Обновляем положение
-            piece.style.left = "0";
-            piece.draggable = false; // Запрещаем перетаскивание после того, как картинка на месте
-
-            // Проверяем, все ли части головоломки на месте
-            checkPuzzleCompletion();
-        }
-    });
-});
-
-// Проверка, завершена ли головоломка
-function checkPuzzleCompletion() {
-    const piecesPlaced = document.querySelectorAll(".drop-zone img");
-    const message = document.getElementById("puzzleMessage");
-
-    // Если все части головоломки на месте, отображаем сообщение
-    if (piecesPlaced.length === pieces.length) {
-        message.textContent = "Поздравляем! Вы собрали головоломку!";
-    } else {
-        message.textContent = "Соберите все части головоломки.";
+        message.textContent = completed ? "Поздравляем! Вы собрали головоломку!" : "";
     }
-}})
+});
 
 
 // Логика "Царской викторины"
