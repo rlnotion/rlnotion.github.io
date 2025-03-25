@@ -6,34 +6,11 @@ const puzzleInfoClose = document.getElementById("puzzleInfoClose");
 const puzzleClose = document.getElementById("puzzleClose");
 const startPuzzleBtn = document.getElementById("startPuzzleBtn");
 const puzzleMessage = document.getElementById("puzzleMessage");
-const quizModal = document.getElementById("quizModal");
-const timelineModal = document.getElementById("timelineModal");
 
 // Кнопки для открытия окон
-const quizBtn = document.getElementById("quizBtn");
-const timelineBtn = document.getElementById("timelineBtn");
-
 puzzleInfoBtn.onclick = () => puzzleInfoModal.style.display = "block";
 puzzleInfoClose.onclick = () => puzzleInfoModal.style.display = "none";
 puzzleClose.onclick = () => puzzleModal.style.display = "none";
-
-// Кнопки закрытия окон
-const quizClose = document.getElementById("quizClose");
-const timelineClose = document.getElementById("timelineClose");
-
-// Открытие окон игр
-quizBtn.onclick = () => quizModal.style.display = "block";
-timelineBtn.onclick = () => timelineModal.style.display = "block";
-
-// Закрытие окон
-quizClose.onclick = () => quizModal.style.display = "none";
-timelineClose.onclick = () => timelineModal.style.display = "none";
-
-// Закрытие окон при клике вне них
-window.onclick = (event) => {
-    if (event.target === quizModal) quizModal.style.display = "none";
-    if (event.target === timelineModal) timelineModal.style.display = "none";
-};
 
 // Логика "Исторической головоломки"
 // Начало игры
@@ -106,6 +83,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 // Логика "Царской викторины"
+console.log("Скрипт загружен");
+
+const modal = document.getElementById('quizModal');
+const closeModalBtn = document.getElementById('closeModalBtn');
+const openQuizBtn = document.getElementById('openQuizBtn'); // Кнопка для открытия
 const answers = document.querySelectorAll('.answer');
 const questionBox = document.getElementById('question');
 const feedback = document.getElementById('feedback');
@@ -119,80 +101,50 @@ const questions = [
 let currentQuestion = 0;
 
 function loadQuestion() {
-    questionBox.textContent = questions[currentQuestion].question;
+    console.log("Загружаем новый вопрос");
+    const current = questions[currentQuestion]; 
+    questionBox.textContent = current.question;
     answers.forEach((button, index) => {
-        button.textContent = questions[currentQuestion].answers[index];
-        button.setAttribute('data-correct', index === questions[currentQuestion].correct ? 'true' : 'false');
+        button.textContent = current.answers[index];
+        button.setAttribute('data-correct', index === current.correct ? 'true' : 'false');
     });
     feedback.textContent = "";
 }
 
+openQuizBtn.addEventListener('click', function() {
+    console.log("Кнопка нажата для открытия викторины");
+    modal.style.display = 'flex';
+    currentQuestion = 0;
+    loadQuestion();
+});
+
+closeModalBtn.addEventListener('click', function() {
+    console.log("Закрытие модального окна");
+    modal.style.display = 'none';
+});
+
 answers.forEach(button => {
-    button.addEventListener('click', (e) => {
-        if (e.target.getAttribute('data-correct') === 'true') {
-            feedback.textContent = "Правильно!";
+    button.addEventListener('click', function() {
+        const isCorrect = this.getAttribute('data-correct') === 'true';
+        feedback.textContent = isCorrect ? "Правильно!" : "Неправильно! Попробуйте снова.";
+        if (isCorrect) {
             currentQuestion++;
             if (currentQuestion < questions.length) {
                 setTimeout(loadQuestion, 1000);
             } else {
                 feedback.textContent = "Вы прошли викторину!";
             }
-        } else {
-            feedback.textContent = "Неправильно! Попробуйте снова.";
         }
     });
 });
 
-loadQuestion();
-
-// Логика "Таймлайн-игры"
-const events = [
-    {year: "862", event: "Призвание варягов"},
-    {year: "988", event: "Крещение Руси"},
-    {year: "1242", event: "Ледовое побоище"},
-    {year: "1613", event: "Начало династии Романовых"},
-    {year: "1812", event: "Отечественная война 1812 года"},
-    {year: "1917", event: "Октябрьская революция"}
-];
-
-const timelineContainer = document.getElementById("timelineContainer");
-const timelineMessage = document.getElementById("timelineMessage");
-
-events.forEach((item, index) => {
-    let eventBox = document.createElement("div");
-    eventBox.classList.add("timeline-event");
-    eventBox.setAttribute("draggable", "true");
-    eventBox.textContent = item.event;
-    eventBox.dataset.year = item.year;
-
-    eventBox.addEventListener("dragstart", (event) => {
-        event.dataTransfer.setData("text", event.target.dataset.year);
-    });
-
-    timelineContainer.appendChild(eventBox);
+// Закрытие модального окна при клике вне его области
+window.addEventListener('click', function(event) {
+    if (event.target === modal) {
+        console.log("Клик за пределами модального окна, закрытие");
+        modal.style.display = 'none';
+    }
 });
-
-const timelineSlots = document.querySelectorAll(".timeline-slot");
-
-timelineSlots.forEach(slot => {
-    slot.addEventListener("dragover", (event) => event.preventDefault());
-
-    slot.addEventListener("drop", (event) => {
-        event.preventDefault();
-        const droppedYear = event.dataTransfer.getData("text");
-
-        if (droppedYear === slot.dataset.year) {
-            slot.textContent = events.find(e => e.year === droppedYear).event;
-            slot.classList.add("correct");
-
-            let allCorrect = [...timelineSlots].every(slot => slot.classList.contains("correct"));
-            if (allCorrect) {
-                timelineMessage.textContent = "Поздравляем! Вы правильно расположили все события!";
-            }
-        }
-    });
-});
-
 
 
 
@@ -290,5 +242,37 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("fullscreenContainer").style.display = "none";
 });
+
+
+// Открытие модального окна с таблицей
+document.getElementById('openTableBtn').onclick = function() {
+    document.getElementById('timelineModal').style.display = 'block';
+};
+
+// Закрытие модального окна с таблицей
+function closeTimeline() {
+    document.getElementById('timelineModal').style.display = 'none';
+}
+
+// Открытие модального окна с подробностями
+function openModal(title, description) {
+    document.getElementById('eventDetails').innerHTML = `<h3>${title}</h3><p>${description}</p>`;
+    document.getElementById('detailsModal').style.display = 'block';
+}
+
+// Закрытие модального окна с подробностями
+function closeDetails() {
+    document.getElementById('detailsModal').style.display = 'none';
+}
+
+// Закрытие модальных окон при клике вне их области
+window.onclick = function(event) {
+    if (event.target == document.getElementById('timelineModal')) {
+        closeTimeline();
+    }
+    if (event.target == document.getElementById('detailsModal')) {
+        closeDetails();
+    }
+};
 
 
