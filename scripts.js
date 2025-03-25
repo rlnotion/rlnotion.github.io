@@ -268,8 +268,24 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+// Увилечение картинки
 
+document.addEventListener("DOMContentLoaded", function () {
+    const fullscreenContainer = document.getElementById("fullscreenContainer");
+    const fullscreenImage = document.getElementById("fullscreenImage");
+    const images = document.querySelectorAll(".clickable-image");
 
+    images.forEach(image => {
+        image.addEventListener("click", () => {
+            fullscreenImage.src = image.src;
+            fullscreenContainer.style.display = "flex";
+        });
+    });
+
+    fullscreenContainer.addEventListener("click", () => {
+        fullscreenContainer.style.display = "none";
+    });
+});
 
 
 
