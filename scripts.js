@@ -12,6 +12,41 @@ puzzleInfoBtn.onclick = () => puzzleInfoModal.style.display = "block";
 puzzleInfoClose.onclick = () => puzzleInfoModal.style.display = "none";
 puzzleClose.onclick = () => puzzleModal.style.display = "none";
 
+//Телефон
+let draggedPiece = null;
+
+// Для телефонов: начало касания
+document.querySelectorAll('.puzzle-piece').forEach(piece => {
+    piece.addEventListener('touchstart', (e) => {
+        draggedPiece = piece;
+    });
+});
+
+// Для телефонов: перемещение пальцем
+document.querySelectorAll('.drop-zone').forEach(zone => {
+    zone.addEventListener('touchmove', (e) => {
+        e.preventDefault(); // чтобы страница не прокручивалась во время перетаскивания
+    });
+
+    zone.addEventListener('touchend', (e) => {
+        if (draggedPiece) {
+            const touch = e.changedTouches[0];
+            const elementAtPoint = document.elementFromPoint(touch.clientX, touch.clientY);
+            if (elementAtPoint && elementAtPoint.classList.contains('drop-zone')) {
+                if (draggedPiece.dataset.piece === elementAtPoint.dataset.piece) {
+                    elementAtPoint.appendChild(draggedPiece);
+                    draggedPiece.style.position = "relative";
+                    draggedPiece.style.left = "0";
+                    draggedPiece.style.top = "0";
+                    draggedPiece.draggable = false; // чтобы после переноса нельзя было перетаскивать снова
+                    checkPuzzleCompletion();
+                }
+            }
+            draggedPiece = null;
+        }
+    });
+});
+
 // Логика "Исторической головоломки"
 // Начало игры
 startPuzzleBtn.onclick = () => {
