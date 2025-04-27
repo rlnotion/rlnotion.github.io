@@ -21,6 +21,11 @@ document.querySelectorAll('.puzzle-piece').forEach(piece => {
         draggedPiece = piece;
     });
 });
+document.querySelectorAll('.puzzle-piece4').forEach(piece => {
+    piece.addEventListener('touchstart', (e) => {
+        draggedPiece = piece;
+    });
+});
 
 // Для телефонов: перемещение пальцем
 document.querySelectorAll('.drop-zone').forEach(zone => {
@@ -33,6 +38,30 @@ document.querySelectorAll('.drop-zone').forEach(zone => {
             const touch = e.changedTouches[0];
             const elementAtPoint = document.elementFromPoint(touch.clientX, touch.clientY);
             if (elementAtPoint && elementAtPoint.classList.contains('drop-zone')) {
+                if (draggedPiece.dataset.piece === elementAtPoint.dataset.piece) {
+                    elementAtPoint.appendChild(draggedPiece);
+                    draggedPiece.style.position = "relative";
+                    draggedPiece.style.left = "0";
+                    draggedPiece.style.top = "0";
+                    draggedPiece.draggable = false; // чтобы после переноса нельзя было перетаскивать снова
+                    checkPuzzleCompletion();
+                }
+            }
+            draggedPiece = null;
+        }
+    });
+});
+
+document.querySelectorAll('.drop-zon').forEach(zone => {
+    zone.addEventListener('touchmove', (e) => {
+        e.preventDefault(); // чтобы страница не прокручивалась во время перетаскивания
+    });
+
+    zone.addEventListener('touchend', (e) => {
+        if (draggedPiece) {
+            const touch = e.changedTouches[0];
+            const elementAtPoint = document.elementFromPoint(touch.clientX, touch.clientY);
+            if (elementAtPoint && elementAtPoint.classList.contains('drop-zon')) {
                 if (draggedPiece.dataset.piece === elementAtPoint.dataset.piece) {
                     elementAtPoint.appendChild(draggedPiece);
                     draggedPiece.style.position = "relative";
